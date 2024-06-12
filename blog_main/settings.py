@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-4huznud$(u*z21q2**7e0uig)sc%*q-rsv2hsq0p%s2u)+p)-y
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -63,6 +63,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # setting up the customized context_processors for categories
+                # blogs is the app name, then filename, then the functionname
+                'blogs.context_processors.get_categories',
             ],
         },
     },
