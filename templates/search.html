@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<!-- Listing Other Featured Posts-->
-<h3 class="text-uppercase text-warning" style="letter-spacing: 2px">Category : {{ category.category_name }}
+
+<!-- Listing of Search Results-->
+<h3 class="text-warning" style="letter-spacing: 2px">Search Results for : {{ keyword }}
 </h3>
 <div class="row mb-2">
-    {% if posts %}
-    {% for post in posts %}
+    {% if blogs %}
+    {% for post in blogs %}
     <!-- skips the first featured post-->
     <div class="col-md-6">
         <div class="card border-0">
@@ -23,4 +24,5 @@
     {% endif %}
 </div>
 </div>
+
 {% endblock %}

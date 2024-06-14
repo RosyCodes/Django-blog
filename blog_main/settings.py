@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blogs',
+    'blog_profile',
 ]
 
 MIDDLEWARE = [
@@ -66,6 +67,8 @@ TEMPLATES = [
                 # setting up the customized context_processors for categories
                 # blogs is the app name, then filename, then the functionname
                 'blogs.context_processors.get_categories',
+                'blogs.context_processors.get_social_links',
+                'blogs.context_processors.get_about_us',
             ],
         },
     },
