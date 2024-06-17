@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row">
+    <!-- left vertical menu  sidebar-->
+    <!-- Load the side bar here-->
+    {% include 'dashboard/sidebar.html'%}
+
+    <!-- right  side content -->
+    <div class="col-md-9">
+        <span>Logged in as <b>{{ user|title }}</b></span>
+
+        <div class="row">
+            <!-- auto-width column for categories block-->
+            <div class="col">
+                <div class="card border-default mb-3">
+                    <div class="card-header text-center text-uppercase font-weight-bold">All Categories</div>
+                    <!-- Counts the number of posts-->
+                    <div class="card-body text-dark">
+                        <h5 class="card-title text-center">{{category_count}}</h5>
+
+                    </div>
+                </div>
+
+            </div>
+            <!-- auto-width column  for posts block-->
+            <div class="col">
+                <div class="card border-default mb-3">
+                    <div class="card-header text-center text-uppercase font-weight-bold">All Posts</div>
+                    <!-- Counts the number of posts-->
+                    <div class="card-body text-dark">
+                        <h5 class="card-title text-center">{{blogs_count}}</h5>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

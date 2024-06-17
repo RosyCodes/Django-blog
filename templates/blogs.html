@@ -14,7 +14,7 @@
                     <h1 class="fw-bolder mb-1">{{ single_post.title }}</h1>
                     <!-- Post meta content-->
                     <div class="text-muted fst-italic mb-2">Posted on {{ single_post.created_at }} by
-                        {{single_post.author}}</div>
+                        {{single_post.author|title}}</div>
                     <!-- Post category-->
                     <a class="badge bg-warning text-decoration-none text-light" href="#!">{{single_post.category}}</a>
                 </header>
@@ -24,7 +24,7 @@
                 <!-- Post content-->
                 <section class="mb-5">
                     <p class="fs-5 mb-4">{{single_post.short_description}}</p>
-                    <p class="fs-5 mb-4">{{single_post.blog_body}}</p>
+                    <p class="fs-5 mb-4">{{single_post.blog_body|linebreaks}}</p>
                 </section>
             </article>
         </div>
@@ -75,7 +75,7 @@
                 <h4 class="font-italic">Follow Us</h4>
                 <ol class="list-unstyled">
                     {% for i in social_links %}
-                    <li><a href="{{i.link}}">{{i.platform}}</a></li>
+                    <li><a href="{{i.link}}" target="_blank">{{i.platform}}</a></li>
                     {% endfor %}
                 </ol>
             </div>

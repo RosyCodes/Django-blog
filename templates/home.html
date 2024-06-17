@@ -26,9 +26,9 @@
     <div class="col-md-6">
         <div class="card border-0">
             <div class="card-body">
-                <!-- adding a link to the title with a non-blue link but rather black link-->
+                <!-- adding a link to the title with a non-blue link but rather black link -->
                 <h3><a href="{% url 'blogs' post.slug %}" class="text-dark">{{ post.title }}</a></h3>
-                <small class="mb-1 text-muted">{{ post.created_at | timesince }} ago | {{ post.author }}</small>
+                <small class="mb-1 text-muted">{{ post.created_at | timesince }} ago | {{ post.author|title }}</small>
                 <p class="card-text">{{post.short_description | truncatewords:20}}</p>
             </div>
         </div>
