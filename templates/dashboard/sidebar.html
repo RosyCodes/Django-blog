@@ -4,6 +4,14 @@
         <!-- making the active menu background dynamic-->
         <a href="{% url 'dashboard' %}"
             class="nav-link text-dark {%if '/dashboard/' == request.path %} bg-warning {% endif %}">Dashboard</a>
+
+        <!-- restricts the User menu option for manager's use only -->
+        <!-- Checks if the user has permission to view the user table-->
+        {% if perms.auth.view_user %}
+        <a href="{% url 'users' %}"
+            class="nav-link text-dark {%if '/users/' in request.path %} bg-warning {% endif %}">Users</a>
+        {% endif %}
+        
         <!-- if the other menu items are part of the path: main_address/dashboard/categories_OR_Posts_OR_logout-->
         <a href="{% url 'categories' %}"
             class="nav-link text-dark {%if '/categories/' in request.path %} bg-warning {% endif %}">Categories</a>
