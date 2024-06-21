@@ -25,6 +25,42 @@
                 <section class="mb-5">
                     <p class="fs-5 mb-4">{{single_post.short_description}}</p>
                     <p class="fs-5 mb-4">{{single_post.blog_body|linebreaks}}</p>
+
+                    <!-- Comment Features-->
+                    <h4>Comments ({{comment_count}})</h4>
+                    {% if comments %}
+                    {% for comment in comments %}
+                    <div class="card mt-1">
+                        <p class="card-text mb-0"> {{comment}} </p>
+                        <span>
+                            <small><i>By {{comment.user | title}}</i></small>
+                            <small><i> | Created at {{comment.created_at|timesince}} ago</i></small>
+                        </span>
+                    </div>
+                    {% endfor %}
+                    {% else %}
+                    No comments yet
+                    {% endif %}
+                    <br>
+                    <div class="form-group">
+                        <!-- WRITE SECTION is only for AUTHORIZED USER-->
+                        {% if user.is_authenticated %}
+                        <!-- we create no action, as this feature follows the single_post(blogs) url path-->
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <textarea name="user_comment" class="form-control"
+                                    placeholder="Write your comment."></textarea>
+                                <input type="submit" value="Submit" class="btn btn-primary mt-2">
+                            </div>
+
+                        </form>
+
+                        {% else %}
+                        <p> Please <span><a href="{% url 'login' %}">login</a></span> to write a comment.</p>
+                        {% endif %}
+                    </div>
+
                 </section>
             </article>
         </div>

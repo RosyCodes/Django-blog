@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Blog
+from .models import Category, Blog, Comment
 
 # prepopulates the blog slug based on the title
 
@@ -11,8 +11,10 @@ class BlogAdmin(admin.ModelAdmin):
     # table we use the format wth the double underscore: fkffield__fieldname
     search_fields = ('id', 'title', 'category__category_name', 'status')
     # make the list editable using the is_featured field
-    list_editable=('is_featured',)
+    list_editable = ('is_featured',)
+
 
 # Register your models here.
 admin.site.register(Category)
 admin.site.register(Blog, BlogAdmin)
+admin.site.register(Comment)
