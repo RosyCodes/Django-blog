@@ -19,7 +19,7 @@
         <header class="blog-header py-3">
             <div class="row flex-nowrap justify-content-between align-items-center">
                 <div class="col-4 pt-1">
-                    <a class="blog-header-logo text-dark" href="/">Side Hustles</a>
+                    <a class="blog-header-logo text-dark" href="/">Side Hustles + </a>
                 </div>
                 <!-- Search Functionality-->
                 <div class="col-4 ">
@@ -49,24 +49,31 @@
         </header>
 
         <div class="nav-scroller py-1 mb-2">
-            <nav class="nav d-flex justify-content-between">
+            <nav class="navbar navbar-dark bg-dark">
+                <!--
+                    <nav class="nav d-flex justify-content-between  bg-dark"> -->
                 {% for c in categories%}
                 <!-- Another way to write the categories due to the returned string 
-                <a class="p-2 text-muted" href="#">{{c.category_name }}</a> -->
-                <a class="p-2 text-muted" href="{% url 'posts_by_category' c.id %}">{{ c }}</a>
+                    <a class="p-2 text-muted" href="#">{{c.category_name }}</a> -->
+                <a class="p-2 text-white" href="{% url 'posts_by_category' c.id %}">{{ c }}</a>
                 {% endfor %}
             </nav>
         </div>
         <!-- Main Content  Part. This part is unique for every web page. THis block is blank by purpose -->
+
         {% block content %}
 
         {% endblock%}
 
         <!-- Footer  Part -->
         <footer class="blog-footer">
-            <p>Django blog built with <i class="fa fa-heart" style="font-size:12px;color:red"></i> by <a
-                    href="#">Rosilie Lim</a></p>
+            <p>Copyright &copy
+                <script>document.write(/\d{4}/.exec(Date())[0])</script> | By <a
+                    href="https://www.linkedin.com/in/rosilielim/" target="_blank">Rosilie</a>
+            </p>
         </footer>
+    </div>
+
 </body>
 
 </html>

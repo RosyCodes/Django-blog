@@ -11,13 +11,14 @@
         <a href="{% url 'users' %}"
             class="nav-link text-dark {%if '/users/' in request.path %} bg-warning {% endif %}">Users</a>
         {% endif %}
-        
+
         <!-- if the other menu items are part of the path: main_address/dashboard/categories_OR_Posts_OR_logout-->
         <a href="{% url 'categories' %}"
             class="nav-link text-dark {%if '/categories/' in request.path %} bg-warning {% endif %}">Categories</a>
         <a href="{% url 'posts' %}"
             class="nav-link text-dark {%if '/posts/' in request.path %} bg-warning {% endif %}">Posts</a>
-        <a href="" class="nav-link text-dark {%if '/logout/' in request.path %} bg-warning {% endif %}">Logout</a>
+        <a href="{% url 'logout' %}"
+            class="nav-link text-dark {%if '/logout/' in request.path %} bg-warning {% endif %}">Logout</a>
     </div>
 
 </div>
