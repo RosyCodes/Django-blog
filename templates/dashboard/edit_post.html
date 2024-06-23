@@ -16,6 +16,7 @@
             {% csrf_token %}
 
             {{ form | crispy}}
+            {{ form.media }}
 
             <button type="submit" class="btm btn-warning">Submit</button>
         </form>

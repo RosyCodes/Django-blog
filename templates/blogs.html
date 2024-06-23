@@ -24,7 +24,7 @@
                 <!-- Post content-->
                 <section class="mb-5">
                     <p class="fs-5 mb-4">{{single_post.short_description}}</p>
-                    <p class="fs-5 mb-4">{{single_post.blog_body|linebreaks}}</p>
+                    <p class="fs-5 mb-4">{{single_post.blog_body | safe | linebreaks }}</p>
 
                     <!-- Comment Features-->
                     <h4>Comments ({{comment_count}})</h4>
