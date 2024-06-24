@@ -3,22 +3,22 @@
     <div class="nav flex-column nav-pills bg-light" aria-orientation="vertical">
         <!-- making the active menu background dynamic-->
         <a href="{% url 'dashboard' %}"
-            class="nav-link text-dark {%if '/dashboard/' == request.path %} bg-warning {% endif %}">Dashboard</a>
+            class="nav-link {%if '/dashboard/' == request.path %} text-white bg-secondary  {% endif %}">Dashboard</a>
 
         <!-- restricts the User menu option for manager's use only -->
         <!-- Checks if the user has permission to view the user table-->
         {% if perms.auth.view_user %}
         <a href="{% url 'users' %}"
-            class="nav-link text-dark {%if '/users/' in request.path %} bg-warning {% endif %}">Users</a>
+            class="nav-link {%if '/users/' in request.path %} text-white bg-secondary {% endif %}">Users</a>
         {% endif %}
 
         <!-- if the other menu items are part of the path: main_address/dashboard/categories_OR_Posts_OR_logout-->
         <a href="{% url 'categories' %}"
-            class="nav-link text-dark {%if '/categories/' in request.path %} bg-warning {% endif %}">Categories</a>
+            class="nav-link {%if '/categories/' in request.path %} text-white bg-secondary {% endif %}">Categories</a>
         <a href="{% url 'posts' %}"
-            class="nav-link text-dark {%if '/posts/' in request.path %} bg-warning {% endif %}">Posts</a>
+            class="nav-link {%if '/posts/' in request.path %} text-white bg-secondary {% endif %}">Posts</a>
         <a href="{% url 'logout' %}"
-            class="nav-link text-dark {%if '/logout/' in request.path %} bg-warning {% endif %}">Logout</a>
+            class="nav-link  {%if '/logout/' in request.path %} text-white bg-secondary {% endif %}">Logout</a>
     </div>
 
 </div>
