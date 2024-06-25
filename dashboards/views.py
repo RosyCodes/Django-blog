@@ -132,6 +132,7 @@ def delete_post(request, pk):
     post.delete()
     return redirect('posts')
 
+
 # CRUD FUNCTIONS for Users
 
 

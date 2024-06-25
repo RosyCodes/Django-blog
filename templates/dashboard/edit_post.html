@@ -11,6 +11,7 @@
 
     <!-- right  side content -->
     <div class="col-md-9">
+        {% if perms.blogs.change_blog %}
         <h3>Edit Blog Post</h3>
         <form action="{% url 'edit_post' post.id %}" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
@@ -20,6 +21,9 @@
 
             <button type="submit" class="btm btn-warning">Submit</button>
         </form>
+        {% else %}
+        <p> You don't have permission to edit a post.</p>
+        {% endif %}
         <br>
     </div>
 </div>
