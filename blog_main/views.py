@@ -5,6 +5,41 @@ from blog_profile.models import About, SocialLink
 from .forms import RegistrationForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import auth
+from django.contrib.auth import views as auth_views
+
+# for sent email rendering
+from django.conf import settings
+from django.contrib.sites.shortcuts import get_current_site
+from django.template.loader import render_to_string
+from django.utils.http import urlsafe_base64_encode
+from django.utils.encoding import force_bytes
+from django.contrib.auth.tokens import default_token_generator
+from django.core.mail import EmailMultiAlternatives
+from django.shortcuts import reverse
+
+
+class CustomPasswordResetView(auth_views.PasswordResetView):
+    email_template_name = 'password_reset_email.html'
+    subject_template_name = 'password_reset_subject.txt'
+    html_email_template_name = 'password_reset_email.html'
+
+    # renders the HTML tags in email sent to pure string
+    def send_mail(self, subject_template_name, email_template_name,
+                  context, from_email, to_email, html_email_template_name=None):
+        """
+        Sends a django.core.mail.EmailMultiAlternatives to `to_email`.
+        """
+        subject = render_to_string(subject_template_name, context)
+        subject = ''.join(subject.splitlines())
+        body = render_to_string(email_template_name, context)
+
+        email_message = EmailMultiAlternatives(
+            subject, body, from_email, [to_email])
+        if html_email_template_name is not None:
+            html_email = render_to_string(html_email_template_name, context)
+            email_message.attach_alternative(html_email, 'text/html')
+
+        email_message.send()
 
 
 def home(request):
